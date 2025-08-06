@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>W_Lifesteal Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(270deg, #a8edea, #fed6e3, #a8edea, #fed6e3);
+      background-size: 800% 800%;
+      animation: gradientFlow 30s ease infinite;
+      color: #333;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .logo { font-size: 24px; font-weight: bold; }
+    nav a {
+      margin-left: 20px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover { color: #00bcd4; }
+
+    .main {
+      padding-top: 120px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .store {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+      max-width: calc(260px * 4 + 30px * 3);
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: center;
+    }
+
+    .item-card {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 12px;
+      width: 260px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .item-card:hover { transform: translateY(-5px); }
+
+    .item-card a {
+      display: inline-block;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .item-card img {
+      width: 200px;
+      image-rendering: pixelated;
+      border-radius: 8px;
+      transition: box-shadow 0.3s;
+    }
+    .item-card img:hover {
+      box-shadow: 0 0 15px #00bcd4;
+    }
+
+    .item-card h2 {
+      font-size: 1.5em;
+      margin: 10px 0;
+      font-weight: bold;
+      color: inherit;
+    }
+    .price {
+      font-size: 1.2em;
+      color: #00bcd4;
+      margin-bottom: 10px;
+    }
+    .buy-btn {
+      background: #00bcd4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    .buy-btn:hover { background: #0097a7; }
+
+    /* PvP God prefix 商品样式 */
+    .item-card.pvp-god > h2:first-of-type {
+      margin-top: 20px; /* 顶部间距 */
+      color: #DAA520; /* Minecraft §6金色 */
+      font-weight: bold;
+    }
+    .item-card.pvp-god > h2 + h2 {
+      margin-top: 40px; /* pvp god 和 prefix 之间间距 */
+      color: inherit;
+      font-weight: bold;
+    }
+
+    /* 弹窗样式 */
+    #modal {
+      position: fixed;
+      top: -100px; /* 初始屏幕外顶部 */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 1em;
+      line-height: 1.2em;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 9999;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+      user-select: none;
+
+      transition: top 0.5s ease-out;
+    }
+    #modal.show {
+      pointer-events: auto;
+    }
+    #modal .exclamation {
+      color: #ff3b3b;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">W_Lifesteal</div>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <section class="main">
+    <h1>W_Lifesteal Store</h1>
+    <div class="store">
+
+      <!-- Iron KIT $0.50 -->
+      <div class="item-card">
+        <a href="/iron_kit/" title="Click to see Iron KIT details">
+          <img src="img/iron-kit.png" alt="Iron KIT" />
+        </a>
+        <h2>Iron KIT</h2>
+        <div class="price">$0.50</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- Totem KIT $1 -->
+      <div class="item-card">
+        <a href="/totem_kit/" title="Click to see Totem KIT details">
+          <img src="img/totem-kit.png" alt="Totem KIT" />
+        </a>
+        <h2>Totem KIT</h2>
+        <div class="price">$1</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- PvP God prefix $1 -->
+      <div class="item-card pvp-god">
+        <h2>[pvp god]</h2>
+        <h2>prefix</h2>
+        <div class="price">$1</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- Redstone KIT $1.5 -->
+      <div class="item-card">
+        <a href="/redstone_kit/" title="Click to see Redstone KIT details">
+          <img src="img/redstone-kit.png" alt="Redstone KIT" />
+        </a>
+        <h2>Redstone KIT</h2>
+        <div class="price">$1.5</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- TNT KIT $1.5 -->
+      <div class="item-card">
+        <a href="/tnt_kit/" title="Click to see TNT KIT details">
+          <img src="img/tnt-kit.png" alt="TNT KIT" />
+        </a>
+        <h2>TNT KIT</h2>
+        <div class="price">$1.5</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- Building KIT $2 -->
+      <div class="item-card">
+        <a href="/building_kit/" title="Click to see Building KIT details">
+          <img src="img/building-kit.png" alt="Building KIT" />
+        </a>
+        <h2>Building KIT</h2>
+        <div class="price">$2</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- Elytra KIT $2 -->
+      <div class="item-card">
+        <a href="/elytra_kit/" title="Click to see Elytra KIT details">
+          <img src="img/elytra-fireworks-kit.png" alt="Elytra KIT" />
+        </a>
+        <h2>Elytra KIT</h2>
+        <div class="price">$2</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- Super Diamond KIT $3 -->
+      <div class="item-card">
+        <a href="/super_diamond_kit/" title="Click to see Super Diamond KIT details">
+          <img src="img/super-diamond-kit.png" alt="Super Diamond KIT" />
+        </a>
+        <h2>Super Diamond KIT</h2>
+        <div class="price">$3</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+      <!-- GOD PVP KIT $5 -->
+      <div class="item-card">
+        <a href="/god_pvp_kit/" title="Click to see GOD PVP KIT details">
+          <img src="img/god-pvp-kit.png" alt="GOD PVP KIT" />
+        </a>
+        <h2>GOD PVP KIT</h2>
+        <div class="price">$5</div>
+        <button class="buy-btn">Buy</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 弹窗 -->
+  <div id="modal" role="alert" aria-live="assertive" aria-atomic="true">
+    <span class="exclamation">❗</span>
+    <span>please contact with the server hoster</span>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const buyButtons = document.querySelectorAll('.buy-btn');
+
+    function showModal() {
+      modal.style.transition = 'top 0.5s ease-out';
+      modal.classList.add('show');
+      modal.style.top = '20px';
+
+      setTimeout(() => {
+        modal.style.transition = 'top 0.5s ease-in';
+        modal.style.top = '-100px';
+      }, 2000);
+
+      modal.addEventListener('transitionend', function handler() {
+        if (modal.style.top === '-100px') {
+          modal.classList.remove('show');
+          modal.removeEventListener('transitionend', handler);
+        }
+      });
+    }
+
+    buyButtons.forEach(btn => {
+      btn.addEventListener('click', showModal);
+    });
+  </script>
+</body>
+</html>

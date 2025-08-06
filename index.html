@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>W_Lifesteal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(270deg, #a8edea, #fed6e3, #a8edea, #fed6e3);
+      background-size: 800% 800%;
+      animation: gradientFlow 30s ease infinite;
+      color: #333;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    .main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    h1 {
+      font-size: 4em;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin: 15px 0;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .ip {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid #00bcd4;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 1.1em;
+      animation: fadeIn 2.5s ease-out;
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      .logo {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">W_Lifesteal</div>
+    <nav>
+      <a href="https://discord.gg/vhBrQu43B4" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="/store/">Store</a>
+    </nav>
+  </header>
+
+  <section class="main">
+    <h1>W_Lifesteal</h1>
+    <p>A private lifesteal SMP</p>
+    <div class="ip">IP: 147.185.221.24:16100</div>
+  </section>
+</body>
+</html>
